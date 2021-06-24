@@ -6479,11 +6479,15 @@ async function run() {
 
       const { body: newBody, hasActive } = markAsNotified(body, reminder.id);
 
-      await octokit.rest.issues.update({
+      const updateData = {
         body: newBody,
         issue_number: pastDueReminders.issueNumber,
         ...getIssueProps(context),
-      });
+      };
+
+      core.info(JSON.stringify(updateData, null, 1));
+
+      await octokit.rest.issues.update(updateData);
 
       if (!hasActive) {
         const data = {
