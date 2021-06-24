@@ -1,23 +1,89 @@
-const wait = require('./wait');
-const process = require('process');
-const cp = require('child_process');
-const path = require('path');
+const { getRemindersFromBody, getPastDueReminders, createCommentsMetadata } = require("./utilities");
 
-test('throws invalid number', async () => {
-  await expect(wait('foo')).rejects.toThrow('milliseconds not a number');
+describe("getRemindersFromBody", () => {
+  test("can find reminder issues", () => {
+    const body = `hello
+
+<!-- bot: {"reminders":[{"id":1,"who":"@hello","what":"do it","when":"1/2/3"}]} -->`;
+
+    const expected = { id: 1, who: "@hello", what: "do it", when: "1/2/3" };
+
+    expect(getRemindersFromBody(body)).toEqual([expected]);
+  });
 });
 
-test('wait 500 ms', async () => {
-  const start = new Date();
-  await wait(500);
-  const end = new Date();
-  var delta = Math.abs(end - start);
-  expect(delta).toBeGreaterThanOrEqual(500);
+describe("getPastDueReminders", () => {
+  test("returns past due reminders", () => {
+    const today = new Date(2000, 1, 1);
+    const items = [
+      {
+        issueNumber: 1,
+        reminder: {
+          when: "2001-06-24T09:00:00.000Z",
+        },
+      },
+      {
+        issueNumber: 2,
+        reminder: {
+          when: "1999-06-24T09:00:00.000Z",
+        },
+      },
+    ];
+
+    const results = getPastDueReminders(today, items);
+
+    expect(results.length).toBe(1);
+    expect(results[0].issueNumber).toBe(2);
+  });
+  test("can handle malformed date", () => {
+    const today = new Date(2000, 1, 1);
+    const items = [
+      {
+        issueNumber: 1,
+        reminder: {
+          when: "blah",
+        },
+      },
+      {
+        issueNumber: 2,
+        reminder: {
+          when: "1999-06-24T09:00:00.000Z",
+        },
+      },
+    ];
+
+    const results = getPastDueReminders(today, items);
+
+    expect(results.length).toBe(1);
+    expect(results[0].issueNumber).toBe(2);
+  });
 });
 
-// shows how the runner will run a javascript action with env / stdout protocol
-test('test runs', () => {
-  process.env['INPUT_MILLISECONDS'] = 500;
-  const ip = path.join(__dirname, 'index.js');
-  console.log(cp.execSync(`node ${ip}`, {env: process.env}).toString());
-})
+describe('createComments', () => {
+  test('creates comments parameters array', () => {
+    const items = [
+      {
+        issueNumber: 1,
+        reminder: {
+          who: 'steve',
+          what: 'to something'
+        },
+      },
+      {
+        issueNumber: 2,
+        reminder: {
+          who: 'scott',
+          what: 'to something else'
+        },
+      },
+    ];
+
+    const result = createCommentsMetadata(items);
+
+    expect(result[0]).toEqual({
+      issue_number: 1,
+      body: ':wave: @steve, to something'
+    });
+    expect(result.length).toBe(2);
+  });
+});
