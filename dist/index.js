@@ -6486,11 +6486,15 @@ async function run() {
       });
 
       if (!hasActive) {
-        await octokit.rest.issues.removeLabel({
+        const data = {
           issue_number: pastDueReminders.issueNumber,
           name: LABEL,
           ...getIssueProps(context),
-        });
+        };
+
+        core.info(JSON.stringify(data, null, 1));
+
+        await octokit.rest.issues.removeLabel(data);
       }
     }
 
