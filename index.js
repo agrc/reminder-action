@@ -61,7 +61,7 @@ async function run() {
     core.endGroup();
 
     core.startGroup('filter reminders for past due');
-    const pastDueReminders = getPastDueReminders(reminders);
+    const pastDueReminders = getPastDueReminders(Date.now(), reminders);
 
     if (reminders.length < 1) {
       core.info('no past due reminders found');

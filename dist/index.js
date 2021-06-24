@@ -6175,7 +6175,7 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 function getRemindersFromBody(body) {
-  const regex = /<!-- bot: (?<reminder>{"reminders":.*) -->/mi;
+  const regex = /\n\n<!-- bot: (?<reminder>{"reminders":.*) -->/;
   const match = body.match(regex);
 
   return match ? JSON.parse(match.groups.reminder).reminders : [];
@@ -6423,7 +6423,7 @@ async function run() {
     core.endGroup();
 
     core.startGroup('filter reminders for past due');
-    const pastDueReminders = getPastDueReminders(reminders);
+    const pastDueReminders = getPastDueReminders(Date.now(), reminders);
 
     if (reminders.length < 1) {
       core.info('no past due reminders found');

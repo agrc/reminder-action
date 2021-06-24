@@ -1,5 +1,5 @@
 function getRemindersFromBody(body) {
-  const regex = /<!-- bot: (?<reminder>{"reminders":.*) -->/mi;
+  const regex = /\n\n<!-- bot: (?<reminder>{"reminders":.*) -->/;
   const match = body.match(regex);
 
   return match ? JSON.parse(match.groups.reminder).reminders : [];
