@@ -123,6 +123,8 @@ async function run() {
     core.endGroup();
   } catch (error) {
     core.setFailed(error);
+
+    throw error;
   }
 }
 
