@@ -46,6 +46,8 @@ async function run() {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
       core.info(`'${issue.body}'`);
+      core.info(`${issue.body.match(/\r/g)}`);
+      core.info(`${issue.body.match(/\n/g)}`);
       core.info(`${remindersFromIssue.length} found for issue #${issue.number}`);
 
       remindersFromIssue.forEach(reminder => {

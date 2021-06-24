@@ -6175,7 +6175,7 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 function getRemindersFromBody(body) {
-  const regex = /\n\n<!-- bot: (?<reminder>{"reminders":.*) -->/;
+  const regex = /<!-- bot: (?<reminder>{"reminders":.*) -->/;
   const match = body.match(regex);
 
   return match ? JSON.parse(match.groups.reminder).reminders : [];
@@ -6408,6 +6408,8 @@ async function run() {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
       core.info(`'${issue.body}'`);
+      core.info(`${issue.body.match(/\r/g)}`);
+      core.info(`${issue.body.match(/\n/g)}`);
       core.info(`${remindersFromIssue.length} found for issue #${issue.number}`);
 
       remindersFromIssue.forEach(reminder => {
