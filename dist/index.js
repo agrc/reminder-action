@@ -6437,7 +6437,7 @@ async function run() {
     core.startGroup('notify past due reminders');
     core.info(`sending ${reminders.length} past due notifications`);
 
-    const metadata = createCommentsMetadata(octokit, context, pastDueReminders);
+    const metadata = createCommentsMetadata(pastDueReminders);
 
     for (let i = 0; i < metadata.length; i++) {
       const data = metadata[i];

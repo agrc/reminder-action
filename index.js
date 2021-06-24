@@ -46,8 +46,6 @@ async function run() {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
       core.info(`'${issue.body}'`);
-      core.info(`${issue.body.match(/\r/g)}`);
-      core.info(`${issue.body.match(/\n/g)}`);
       core.info(`${remindersFromIssue.length} found for issue #${issue.number}`);
 
       remindersFromIssue.forEach(reminder => {
@@ -75,7 +73,7 @@ async function run() {
     core.startGroup('notify past due reminders');
     core.info(`sending ${reminders.length} past due notifications`);
 
-    const metadata = createCommentsMetadata(octokit, context, pastDueReminders);
+    const metadata = createCommentsMetadata(pastDueReminders);
 
     for (let i = 0; i < metadata.length; i++) {
       const data = metadata[i];
