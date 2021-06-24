@@ -2,11 +2,11 @@ const { getRemindersFromBody, getPastDueReminders, createCommentsMetadata } = re
 
 describe("getRemindersFromBody", () => {
   test("can find reminder issues", () => {
-    const body = `hello
+    const body = `testing
 
-<!-- bot: {"reminders":[{"id":1,"who":"@hello","what":"do it","when":"1/2/3"}]} -->`;
+<!-- bot: {"reminders":[{"id":1,"who":"stdavis","what":"celebrate","when":"2020-06-24T09:28:33.000Z"}]} -->`;
 
-    const expected = { id: 1, who: "@hello", what: "do it", when: "1/2/3" };
+    const expected = { id: 1, who: "stdavis", what: "celebrate", when: "2020-06-24T09:28:33.000Z" };
 
     expect(getRemindersFromBody(body)).toEqual([expected]);
   });
