@@ -6211,7 +6211,7 @@ function markAsNotified(body, reminderId) {
   const activeReminders = reminders.filter(reminder => reminder.id !== reminderId);
 
   if (activeReminders.length === 0) {
-    return {body: body.replace(newlineRegex, ''), hasActive: false};
+    return { body: body.replace(newlineRegex, ''), hasActive: false };
   }
 
   return { body: body.replace(regex, `<!-- bot: ${JSON.stringify({ reminders: activeReminders })} -->`), hasActive: true };
@@ -6497,7 +6497,7 @@ async function run() {
 
     core.endGroup();
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error);
   }
 }
 
