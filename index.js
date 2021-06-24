@@ -45,7 +45,6 @@ async function run() {
     issues.forEach(issue => {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
-      core.info(`'${issue.body}'`);
       core.info(`${remindersFromIssue.length} found for issue #${issue.number}`);
 
       remindersFromIssue.forEach(reminder => {
@@ -79,7 +78,7 @@ async function run() {
       const data = metadata[i];
       await octokit.rest.createComments({
         ...data,
-        ...getIssueProps()
+        ...getIssueProps(context)
       });
     }
     core.endGroup();
