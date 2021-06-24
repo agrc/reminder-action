@@ -1,6 +1,6 @@
-name: 'Reminder'
+name: 'Reminders'
 author: 'UGRC'
-description: 'Posts reminder comments'
+description: 'Posts issue comments when reminders are due'
 branding:
   icon: 'calendar'
   color: 'white'
