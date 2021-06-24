@@ -23,7 +23,7 @@ name: 'check reminders'
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "0 * * * *"
 
 jobs:
   reminder:
