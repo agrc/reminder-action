@@ -117,7 +117,7 @@ async function run() {
 
       if (!hasActive) {
         const data = {
-          issue_number: pastDueReminders.issueNumber,
+          issue_number: issueNumber,
           name: LABEL,
           ...getIssueProps(context),
         };
