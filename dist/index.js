@@ -6387,7 +6387,7 @@ async function run() {
 
     let issues = [];
     core.startGroup('get open reminder issues');
-    for await (const response of octokit.paginate.iterator(octokit.issues.listForRepo, {
+    for await (const response of octokit.rest.paginate.iterator(octokit.rest.issues.listForRepo, {
       ...getIssueProps(context),
       state: 'open',
       labels: [LABEL],
