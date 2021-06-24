@@ -6210,7 +6210,7 @@ function markAsNotified(body, reminderId) {
   const activeReminders = reminders.filter(reminder => reminder.id !== reminderId);
 
   if (activeReminders.length === 0) {
-    return { body: body.replace(regex, ' '), hasActive: false };
+    return { body: body.replace(regex, ''), hasActive: false };
   }
 
   return { body: body.replace(regex, `\n\n<!-- bot: ${JSON.stringify({ reminders: activeReminders })} -->`), hasActive: true };
