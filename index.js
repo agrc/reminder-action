@@ -107,7 +107,7 @@ async function run() {
 
       const updateData = {
         body: newBody,
-        issue_number: pastDueReminders.issueNumber,
+        issue_number: reminder.issueNumber,
         ...getIssueProps(context),
       };
 
