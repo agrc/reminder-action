@@ -1,5 +1,4 @@
-const regex = /<!-- bot: (?<reminder>{"reminders":.*) -->/;
-const newlineRegex = /\n\n<!-- bot: (?<reminder>{"reminders":.*) -->/;
+const regex = /\r?\n\r?\n<!-- bot: (?<reminder>{"reminders":.*) -->/;
 
 function getRemindersFromBody(body) {
   const match = body.match(regex);
@@ -35,10 +34,10 @@ function markAsNotified(body, reminderId) {
   const activeReminders = reminders.filter(reminder => reminder.id !== reminderId);
 
   if (activeReminders.length === 0) {
-    return { body: body.replace(newlineRegex, ''), hasActive: false };
+    return { body: body.replace(regex, ''), hasActive: false };
   }
 
-  return { body: body.replace(regex, `<!-- bot: ${JSON.stringify({ reminders: activeReminders })} -->`), hasActive: true };
+  return { body: body.replace(regex, `\n\n<!-- bot: ${JSON.stringify({ reminders: activeReminders })} -->`), hasActive: true };
 }
 
 module.exports = { getRemindersFromBody, getPastDueReminders, createCommentsMetadata, markAsNotified };
