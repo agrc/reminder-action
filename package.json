@@ -1,7 +1,7 @@
 {
-  "name": "javascript-action",
+  "name": "reminder-action",
   "version": "1.0.0",
-  "description": "JavaScript Action Template",
+  "description": "Post issue comments when reminders are due",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -11,19 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
+    "url": "git+https://github.com/agrc/reminder-action.git"
   },
   "keywords": [
     "GitHub",
     "Actions",
-    "JavaScript"
+    "JavaScript",
+    "probot",
+    "reminders"
   ],
-  "author": "",
+  "author": "UGRC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "https://github.com/agrc/reminder-action/issues"
   },
-  "homepage": "https://github.com/actions/javascript-action#readme",
+  "homepage": "https://github.com/agrc/reminder-action#readme",
   "dependencies": {
     "@actions/core": "^1.4.0",
     "@actions/github": "^5.0.0"
