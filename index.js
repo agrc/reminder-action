@@ -76,7 +76,7 @@ async function run() {
 
     for (let i = 0; i < metadata.length; i++) {
       const data = metadata[i];
-      await octokit.rest.createComments({
+      await octokit.rest.issues.createComment({
         ...data,
         ...getIssueProps(context)
       });
