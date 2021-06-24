@@ -1,4 +1,9 @@
-const { getRemindersFromBody, getPastDueReminders, createCommentsMetadata } = require("./utilities");
+const {
+  getRemindersFromBody,
+  getPastDueReminders,
+  createCommentsMetadata,
+  markAsNotified,
+} = require("./utilities");
 
 describe("getRemindersFromBody", () => {
   test("can find reminder issues", () => {
@@ -6,7 +11,12 @@ describe("getRemindersFromBody", () => {
 
 <!-- bot: {"reminders":[{"id":1,"who":"stdavis","what":"celebrate","when":"2020-06-24T09:28:33.000Z"}]} -->`;
 
-    const expected = { id: 1, who: "stdavis", what: "celebrate", when: "2020-06-24T09:28:33.000Z" };
+    const expected = {
+      id: 1,
+      who: "stdavis",
+      what: "celebrate",
+      when: "2020-06-24T09:28:33.000Z",
+    };
 
     expect(getRemindersFromBody(body)).toEqual([expected]);
   });
@@ -59,21 +69,21 @@ describe("getPastDueReminders", () => {
   });
 });
 
-describe('createComments', () => {
-  test('creates comments parameters array', () => {
+describe("createComments", () => {
+  test("creates comments parameters array", () => {
     const items = [
       {
         issueNumber: 1,
         reminder: {
-          who: 'steve',
-          what: 'to something'
+          who: "steve",
+          what: "to something",
         },
       },
       {
         issueNumber: 2,
         reminder: {
-          who: 'scott',
-          what: 'to something else'
+          who: "scott",
+          what: "to something else",
         },
       },
     ];
@@ -82,8 +92,34 @@ describe('createComments', () => {
 
     expect(result[0]).toEqual({
       issue_number: 1,
-      body: ':wave: @steve, to something'
+      body: ":wave: @steve, to something",
     });
     expect(result.length).toBe(2);
+  });
+});
+
+describe("markAsNotified", () => {
+  test("removes reminder from body but leaves active ones", () => {
+    const body = `testing
+
+<!-- bot: {"reminders":[{"id":1,"who":"stdavis","what":"celebrate","when":"2020-06-24T09:28:33.000Z"},{"id":2,"who":"stdavis","what":"celebrate","when":"2020-06-24T09:28:33.000Z"}]} -->`;
+
+    const expected = {
+      body: `testing
+
+<!-- bot: {"reminders":[{"id":2,"who":"stdavis","what":"celebrate","when":"2020-06-24T09:28:33.000Z"}]} -->`,
+      hasActive: true,
+    };
+
+    expect(markAsNotified(body, 1)).toEqual(expected);
+  });
+  test("removes reminder from body", () => {
+    const body = `testing
+
+<!-- bot: {"reminders":[{"id":1,"who":"stdavis","what":"celebrate","when":"2020-06-24T09:28:33.000Z"}]} -->`;
+
+    const expected = { body: "testing", hasActive: false };
+
+    expect(markAsNotified(body, 1)).toEqual(expected);
   });
 });
