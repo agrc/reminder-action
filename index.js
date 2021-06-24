@@ -45,6 +45,9 @@ async function run() {
     issues.forEach(issue => {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
+      core.info(issue.body);
+      core.info(`${remindersFromIssue.length} found for ${issue.number}`);
+
       remindersFromIssue.forEach(reminder => {
         reminders.push({issueNumber: issue.number, reminder});
       });
