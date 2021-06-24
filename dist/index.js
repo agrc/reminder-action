@@ -6175,7 +6175,7 @@ function wrappy (fn, cb) {
 /***/ ((module) => {
 
 function getRemindersFromBody(body) {
-  const regex = /\n\n<!-- bot: (?<reminder>{"reminders":.*) -->/;
+  const regex = /<!-- bot: (?<reminder>{"reminders":.*) -->/mi;
   const match = body.match(regex);
 
   return match ? JSON.parse(match.groups.reminder).reminders : [];
