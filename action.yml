@@ -1,6 +1,6 @@
-name: 'Create Reminder'
+name: 'Reminder'
 author: 'UGRC'
-description: 'Set a reminder when a comment is posted in an issue'
+description: 'Posts reminder comments'
 branding:
   icon: 'calendar'
   color: 'white'
