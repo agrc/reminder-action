@@ -101,13 +101,13 @@ async function run() {
 
     core.startGroup("removing notification metadata");
     for (let i = 0; i < pastDueReminders.length; i++) {
-      const { body, reminder } = pastDueReminders[i];
+      const { body, reminder, issueNumber } = pastDueReminders[i];
 
       const { body: newBody, hasActive } = markAsNotified(body, reminder.id);
 
       const updateData = {
         body: newBody,
-        issue_number: reminder.issueNumber,
+        issue_number: issueNumber,
         ...getIssueProps(context),
       };
 
