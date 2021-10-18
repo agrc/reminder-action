@@ -19,11 +19,11 @@ Use any form of `/remind me [what] [when]`, such as:
 ## Sample Usage
 
 ```yml
-name: "check reminders"
+name: 'check reminders'
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: '0 * * * *'
 
 jobs:
   reminder:

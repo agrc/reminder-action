@@ -1,13 +1,13 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+const core = require('@actions/core');
+const github = require('@actions/github');
 const {
   getRemindersFromBody,
   getPastDueReminders,
   createCommentsMetadata,
   markAsNotified,
-} = require("./utilities");
+} = require('./utilities');
 
-const LABEL = "reminder";
+const LABEL = 'reminder';
 
 function getIssueProps(context) {
   return {
@@ -19,24 +19,24 @@ function getIssueProps(context) {
 async function run() {
   try {
     const context = github.context.payload;
-    const owner = core.getInput("repositoryOwner");
-    const repository = core.getInput("repository");
+    const owner = core.getInput('repositoryOwner');
+    const repository = core.getInput('repository');
     const octokit = github.getOctokit(
-      core.getInput("repoToken", { required: true })
+      core.getInput('repoToken', { required: true })
     );
 
     context.repository = {
       owner,
-      name: repository.split("/")[1],
+      name: repository.split('/')[1],
     };
 
     let issues = [];
-    core.startGroup("get open reminder issues");
+    core.startGroup('get open reminder issues');
     for await (const response of octokit.paginate.iterator(
       octokit.rest.issues.listForRepo,
       {
         ...getIssueProps(context),
-        state: "open",
+        state: 'open',
         labels: [LABEL],
       }
     )) {
@@ -44,14 +44,14 @@ async function run() {
     }
 
     if (issues.length < 1) {
-      core.info("no open issues found with the reminder label");
+      core.info('no open issues found with the reminder label');
 
       return;
     }
     core.endGroup();
 
     const reminders = [];
-    core.startGroup("get all reminders from issues");
+    core.startGroup('get all reminders from issues');
     issues.forEach((issue) => {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
@@ -69,23 +69,23 @@ async function run() {
     });
 
     if (reminders.length < 1) {
-      core.info("no reminders found");
+      core.info('no reminders found');
 
       return;
     }
     core.endGroup();
 
-    core.startGroup("filter reminders for past due");
+    core.startGroup('filter reminders for past due');
     const pastDueReminders = getPastDueReminders(Date.now(), reminders);
 
     if (reminders.length < 1) {
-      core.info("no past due reminders found");
+      core.info('no past due reminders found');
 
       return;
     }
     core.endGroup();
 
-    core.startGroup("notify past due reminders");
+    core.startGroup('notify past due reminders');
     core.info(`sending ${reminders.length} past due notifications`);
 
     const metadata = createCommentsMetadata(pastDueReminders);
@@ -99,7 +99,7 @@ async function run() {
     }
     core.endGroup();
 
-    core.startGroup("removing notification metadata");
+    core.startGroup('removing notification metadata');
     for (let i = 0; i < pastDueReminders.length; i++) {
       const { body, reminder, issueNumber } = pastDueReminders[i];
 
