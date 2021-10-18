@@ -20,6 +20,10 @@ describe("getRemindersFromBody", () => {
 
     expect(getRemindersFromBody(body)).toEqual([expected]);
   });
+  test("Can handle body being null", () => {
+    const body = null;
+    expect(getRemindersFromBody(body)).toEqual([]);
+  });
 });
 
 describe("getPastDueReminders", () => {
