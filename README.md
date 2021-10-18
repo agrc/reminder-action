@@ -19,7 +19,7 @@ Use any form of `/remind me [what] [when]`, such as:
 ## Sample Usage
 
 ```yml
-name: 'check reminders'
+name: "check reminders"
 
 on:
   schedule:
@@ -30,26 +30,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: check reminders and notify
-      uses: agrc/reminder-action@v1.0.0
+      - name: check reminders and notify
+        uses: agrc/reminder-action@v1
 ```
 
 ## Package for distribution
 
 GitHub Actions will run the entry point from the action.yml. Packaging assembles the code into one file that can be checked in to Git, enabling fast and reliable execution and preventing the need to check in node_modules.
 
-Actions are run from GitHub repos.  Packaging the action will create a packaged action in the dist folder.
+Actions are run from GitHub repos. Packaging the action will create a packaged action in the dist folder.
 
-Run prepare
+1. Semantic version (_for major changes, a new v(major) branch is required_)
 
-```bash
-npm run prepare
-```
+   ```bash
+   npm version (minor | patch) --no-commit-hooks --no-git-tag-version
+   ```
 
-Since the packaged index.js is run from the dist folder.
+1. Run prepare
 
-```bash
-git add dist
-```
+   ```bash
+   npm run prepare
+   ```
 
-Use the draft a release workflow on GitHub.
+1. Since the packaged index.js is run from the dist folder.
+
+   ```bash
+   git add dist package*.json
+   ```
+
+1. Commit changes
+
+   ```bash
+   git commit -am "release: v1.*.*"
+   ```
+
+1. Use the draft a release workflow on GitHub.
+   - [pick a color](https://perchance.org/color-name) + [pet name generator](https://www.namegenerator.co/animals/pet-name-generator) with the first letter matching the first letter of the color
