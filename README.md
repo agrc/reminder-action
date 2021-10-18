@@ -61,7 +61,7 @@ Actions are run from GitHub repos. Packaging the action will create a packaged a
 1. Commit changes
 
    ```bash
-   git commit -am "release: v1.*.*"
+   git commit -m "release: v1.*.*"
    ```
 
 1. Use the draft a release workflow on GitHub.
