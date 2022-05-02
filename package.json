@@ -31,17 +31,17 @@
   },
   "homepage": "https://github.com/agrc/reminder-action#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.7.0",
     "@actions/github": "^5.0.1"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.33.3",
-    "eslint": "^8.12.0",
+    "@vercel/ncc": "^0.33.4",
+    "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
-    "jest": "^27.5.1",
-    "lint-staged": "^12.3.7",
-    "prettier": "^2.6.1"
+    "jest": "^28.0.3",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2"
   },
   "eslintConfig": {
     "env": {
