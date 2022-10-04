@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/agrc/reminder-action/compare/v1.0.2...v1.0.3) (2022-10-04)
+
+
+### 🐛 Bug Fixes
+
+* Oct dep bump 🌲 ([8eceba2](https://github.com/agrc/reminder-action/commit/8eceba26ee05c6094d08a54a03ede427100d7658))
+
 ## [1.0.2](https://github.com/agrc/reminder-action/compare/v1.0.1...v1.0.2) (2022-10-04)
 
 
