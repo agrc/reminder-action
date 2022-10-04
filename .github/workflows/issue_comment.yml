@@ -1,4 +1,4 @@
-name: 'create reminder'
+name: Issue Comment Events
 
 on:
   issue_comment:
@@ -6,8 +6,9 @@ on:
 
 jobs:
   reminder:
+    name: Check for reminder
     runs-on: ubuntu-latest
 
     steps:
-      - name: check for reminder
+      - name: 🔍 Check for reminder
         uses: agrc/create-reminder-action@v1
