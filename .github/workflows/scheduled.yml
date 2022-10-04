@@ -11,5 +11,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Notify
+    - name: ⚠️ Notify
       uses: agrc/reminder-action@v1
