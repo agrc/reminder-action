@@ -1,4 +1,4 @@
-name: 'check reminders'
+name: Scheduled Events
 
 on:
   schedule:
@@ -7,8 +7,9 @@ on:
 
 jobs:
   reminder:
+    name: Notify
     runs-on: ubuntu-latest
 
     steps:
-    - name: check reminders and notify
+    - name: Notify
       uses: agrc/reminder-action@v1

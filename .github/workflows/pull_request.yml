@@ -1,0 +1,87 @@
+name: Pull Request Events
+on:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🧵 Lint
+        run: npm run lint
+
+  test-unit:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🧪 Run tests
+        run: npm test
+
+  build:
+    name: Commit Release Assets
+    runs-on: ubuntu-latest
+    if: ${{ github.event.sender.login == 'ugrc-release-bot[bot]' }}
+    permissions:
+      contents: write
+    steps:
+      - name: 🪙 Convert token
+        uses: tibdex/github-app-token@v1
+        id: generate_token
+        with:
+          app_id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
+          private_key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
+
+      - name: ⬇️ Set up code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ steps.generate_token.outputs.token }}
+
+      - name: ⎔ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: 📥 Download dependencies
+        run: npm ci
+
+      - name: 🏗️ Commit and push if needed
+        run: |
+          git config user.name "${{ secrets.UGRC_RELEASE_BOT_NAME }}"
+          git config user.email "${{ secrets.UGRC_RELEASE_BOT_EMAIL }}"
+          git add dist/*
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "no changes to dist/*"
+            exit 0
+          fi
+          git commit -m 'chore: build release assets'
+          git push
