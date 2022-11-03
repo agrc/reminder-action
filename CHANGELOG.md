@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/agrc/reminder-action/compare/v1.0.3...v1.0.4) (2022-11-03)
+
+
+### 🐛 Bug Fixes
+
+* november updates ([3eab566](https://github.com/agrc/reminder-action/commit/3eab5663df4632d7d55dcd7d65ba2439ec1776f4))
+
 ## [1.0.3](https://github.com/agrc/reminder-action/compare/v1.0.2...v1.0.3) (2022-10-04)
 
 
