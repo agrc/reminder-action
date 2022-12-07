@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/agrc/reminder-action/compare/v1.0.4...v1.0.5) (2022-12-07)
+
+
+### 🐛 Bug Fixes
+
+* :evergreen_tree: november package updates ([32a3ab0](https://github.com/agrc/reminder-action/commit/32a3ab0c8aeb3559d2ffa1e06a6b1b526a70e99b))
+
 ## [1.0.4](https://github.com/agrc/reminder-action/compare/v1.0.3...v1.0.4) (2022-11-03)
 
 
