@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/agrc/reminder-action/compare/v1.0.5...v1.0.6) (2023-04-04)
+
+
+### 🌲 Dependencies
+
+* q2 package updates ([08cb1a3](https://github.com/agrc/reminder-action/commit/08cb1a3c65eaebb98b0017f89dd7ae9641a64295))
+
 ## [1.0.5](https://github.com/agrc/reminder-action/compare/v1.0.4...v1.0.5) (2022-12-07)
 
 
