@@ -1,6 +1,6 @@
 # Reminder Action
 
-[![units-test](https://github.com/agrc/reminder-action/actions/workflows/test.yml/badge.svg)](https://github.com/agrc/reminder-action/actions/workflows/test.yml)
+[![Push Events](https://github.com/agrc/reminder-action/actions/workflows/push.yml/badge.svg)](https://github.com/agrc/reminder-action/actions/workflows/push.yml)
 
 ## About
 
