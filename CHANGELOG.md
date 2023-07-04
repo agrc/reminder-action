@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.7](https://github.com/agrc/reminder-action/compare/v1.0.6...v1.0.7) (2023-07-04)
+
+
+### 🐛 Bug Fixes
+
+* Q3 Dependency Bumps 🌲 ([7dff455](https://github.com/agrc/reminder-action/commit/7dff4552dcf244df72e5591a33dbfa7e6a50768e))
+
+
+### 📖 Documentation Improvements
+
+* fix status badge ([6f0652f](https://github.com/agrc/reminder-action/commit/6f0652f28044ad4676051139901cf8a3aa33725e))
+
 ## [1.0.6](https://github.com/agrc/reminder-action/compare/v1.0.5...v1.0.6) (2023-04-04)
 
 
