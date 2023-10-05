@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.9](https://github.com/agrc/reminder-action/compare/v1.0.8...v1.0.9) (2023-10-05)
+
+
+### 🐛 Bug Fixes
+
+* update node version ([92d2512](https://github.com/agrc/reminder-action/commit/92d251286b5b4455e605fe322cc4140a22c47bdc))
+
 ## [1.0.8](https://github.com/agrc/reminder-action/compare/v1.0.7...v1.0.8) (2023-10-05)
 
 
