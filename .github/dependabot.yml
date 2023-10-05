@@ -22,7 +22,5 @@ updates:
     schedule:
       interval: monthly
     groups:
-      production-dependencies:
+      ci-dependencies:
         dependency-type: 'production'
-      development-dependencies:
-        dependency-type: 'development'
