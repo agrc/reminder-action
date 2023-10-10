@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.10](https://github.com/agrc/reminder-action/compare/v1.0.9...v1.0.10) (2023-10-10)
+
+
+### 🌲 Dependencies
+
+* bump the major-dependencies group with 1 update ([5522e79](https://github.com/agrc/reminder-action/commit/5522e799e33e507e1bbed9fe09aa809c7969b169))
+* **dev:** bump the safe-dependencies group with 1 update ([0db29ee](https://github.com/agrc/reminder-action/commit/0db29eeeadac223c6f602264e7aa576cfb6136aa))
+
 ## [1.0.9](https://github.com/agrc/reminder-action/compare/v1.0.8...v1.0.9) (2023-10-05)
 
 
