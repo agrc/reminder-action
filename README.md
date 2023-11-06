@@ -25,6 +25,9 @@ on:
   schedule:
     - cron: '0 * * * *'
 
+permissions:
+  issues: write
+
 jobs:
   reminder:
     runs-on: ubuntu-latest
