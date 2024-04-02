@@ -57,11 +57,11 @@ jobs:
       contents: write
     steps:
       - name: 🪙 Convert token
-        uses: tibdex/github-app-token@v2
+        uses: actions/create-github-app-token@v1
         id: generate_token
         with:
-          app_id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
-          private_key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
+          app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: ⬇️ Set up code
         uses: actions/checkout@v4
