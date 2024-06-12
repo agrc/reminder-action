@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.13](https://github.com/agrc/reminder-action/compare/v1.0.12...v1.0.13) (2024-06-12)
+
+
+### 🌲 Dependencies
+
+* q4 package updates ([31d067f](https://github.com/agrc/reminder-action/commit/31d067f1c84c88c8690dab4d3e6462150daa467c))
+
+
+### 🎨 Design Improvements
+
+* prettier ([c0df621](https://github.com/agrc/reminder-action/commit/c0df621c9ab12f25ffe1d282f63ab6e88e6f7b06))
+
 ## [1.0.12](https://github.com/agrc/reminder-action/compare/v1.0.11...v1.0.12) (2024-04-03)
 
 
