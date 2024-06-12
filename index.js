@@ -22,7 +22,7 @@ async function run() {
     const owner = core.getInput('repositoryOwner');
     const repository = core.getInput('repository');
     const octokit = github.getOctokit(
-      core.getInput('repoToken', { required: true })
+      core.getInput('repoToken', { required: true }),
     );
 
     context.repository = {
@@ -38,7 +38,7 @@ async function run() {
         ...getIssueProps(context),
         state: 'open',
         labels: [LABEL],
-      }
+      },
     )) {
       issues = issues.concat(response.data);
     }
@@ -56,7 +56,7 @@ async function run() {
       const remindersFromIssue = getRemindersFromBody(issue.body);
 
       core.info(
-        `${remindersFromIssue.length} found for issue #${issue.number}`
+        `${remindersFromIssue.length} found for issue #${issue.number}`,
       );
 
       remindersFromIssue.forEach((reminder) => {
