@@ -9,7 +9,7 @@
     "fix": "npm run format:fix && npm run lint:fix",
     "lint": "eslint ./ --ext .js --ignore-path ./.ignore",
     "lint:fix": "eslint ./ --ext .js --quiet --fix --ignore-path ./.ignore",
-    "prepare": "husky install && ncc build index.js -o dist --source-map --license licenses.txt",
+    "prepare": "husky && ncc build index.js -o dist --source-map --license licenses.txt",
     "test": "jest",
     "all": "npm run fix && npm run prepare && npm run test"
   },
