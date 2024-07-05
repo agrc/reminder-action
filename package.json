@@ -7,8 +7,8 @@
     "format": "prettier --write ./ --ignore-path ./.ignore",
     "format:fix": "prettier --loglevel warn --write \"./**/*.{js,md}\" --ignore-path ./.ignore",
     "fix": "npm run format:fix && npm run lint:fix",
-    "lint": "eslint ./ --ext .js --ignore-path ./.ignore",
-    "lint:fix": "eslint ./ --ext .js --quiet --fix --ignore-path ./.ignore",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --quiet --fix",
     "prepare": "husky && ncc build index.js -o dist --source-map --license licenses.txt",
     "test": "jest",
     "all": "npm run fix && npm run prepare && npm run test"
@@ -35,34 +35,23 @@
     "@actions/github": "^6.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.6.0",
     "@vercel/ncc": "^0.38.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.6.0",
     "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.8.0",
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2"
-  },
-  "eslintConfig": {
-    "env": {
-      "node": true,
-      "es6": true,
-      "jest": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "prettier"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2018
-    }
   },
   "prettier": {
     "singleQuote": true,
     "semi": true
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix --ignore-path ./.ignore",
+    "*.js": "eslint --cache --fix",
     "*.{js,md}": "prettier --write --ignore-path ./.ignore"
   }
 }
