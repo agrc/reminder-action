@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.13](https://github.com/agrc/reminder-action/compare/v1.0.12...v1.0.13) (2024-07-06)
+
+
+### Dependencies
+
+* eslint v8 -&gt; v9 ([b915d45](https://github.com/agrc/reminder-action/commit/b915d4501b639903c40d97767d2b5490b1b0b01b))
+* q4 package updates ([31d067f](https://github.com/agrc/reminder-action/commit/31d067f1c84c88c8690dab4d3e6462150daa467c))
+
+
+### Styles
+
+* prettier ([c0df621](https://github.com/agrc/reminder-action/commit/c0df621c9ab12f25ffe1d282f63ab6e88e6f7b06))
+
 ## [1.0.12](https://github.com/agrc/reminder-action/compare/v1.0.11...v1.0.12) (2024-04-03)
 
 
