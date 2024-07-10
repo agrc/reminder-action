@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.14](https://github.com/agrc/reminder-action/compare/v1.0.13...v1.0.14) (2024-07-10)
+
+
+### Documentation
+
+* document pull request permissions ([5e7df86](https://github.com/agrc/reminder-action/commit/5e7df86a399f6236ef9432c36f8b28dc98ed433b))
+
 ## [1.0.13](https://github.com/agrc/reminder-action/compare/v1.0.12...v1.0.13) (2024-07-06)
 
 

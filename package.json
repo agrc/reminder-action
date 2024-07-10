@@ -1,6 +1,6 @@
 {
   "name": "reminder-action",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Post issue comments when reminders are due",
   "main": "index.js",
   "scripts": {
