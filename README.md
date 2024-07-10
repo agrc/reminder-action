@@ -18,6 +18,9 @@ Use any form of `/remind me [what] [when]`, such as:
 
 ## Sample Usage
 
+>[!TIP]
+> Add `issues: write` and `pull-requests: write` if you intend to use reminders in pull requests and issues.
+
 ```yml
 name: 'check reminders'
 
@@ -27,6 +30,7 @@ on:
 
 permissions:
   issues: write
+  pull-requests: write
 
 jobs:
   reminder:
