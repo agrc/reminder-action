@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.15](https://github.com/agrc/reminder-action/compare/v1.0.14...v1.0.15) (2024-10-03)
+
+
+### Dependencies
+
+* **dev:** bump the safe-dependencies group across 1 directory with 7 updates ([ad5aeff](https://github.com/agrc/reminder-action/commit/ad5aeff65d2cd61582514269aaeb91799075d5cc))
+
 ## [1.0.14](https://github.com/agrc/reminder-action/compare/v1.0.13...v1.0.14) (2024-07-10)
 
 
