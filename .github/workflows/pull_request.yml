@@ -57,7 +57,7 @@ jobs:
       contents: write
     steps:
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v2
         id: generate_token
         with:
           app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
