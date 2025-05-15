@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.17](https://github.com/agrc/reminder-action/compare/v1.0.16...v1.0.17) (2025-05-15)
+
+
+### Features
+
+* convert to typescript and modernize ([2078a7c](https://github.com/agrc/reminder-action/commit/2078a7c0cddc9aaeae5fe2a5f6b125c88a4b5170))
+
+
+### Documentation
+
+* update suggested cron schedule based on GitHub best practices ([c41ef54](https://github.com/agrc/reminder-action/commit/c41ef54fdc18486788309a62db6b41010a5e9da1))
+
 ## [1.0.16](https://github.com/agrc/reminder-action/compare/v1.0.15...v1.0.16) (2025-01-03)
 
 
