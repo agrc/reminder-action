@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.18](https://github.com/agrc/reminder-action/compare/v1.0.17...v1.0.18) (2025-07-30)
+
+
+### Dependencies
+
+* audit fix ([b1a1eaf](https://github.com/agrc/reminder-action/commit/b1a1eafea34fe75e2fba30d5d7c52a4eb26fa67a))
+* bump brace-expansion in the npm_and_yarn group ([6b908e1](https://github.com/agrc/reminder-action/commit/6b908e1c1543a02a7028010be8e342d031a4aff9))
+
 ## [1.0.17](https://github.com/agrc/reminder-action/compare/v1.0.16...v1.0.17) (2025-05-15)
 
 
