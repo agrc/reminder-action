@@ -38,7 +38,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.2",
     "@total-typescript/tsconfig": "^1.0.4",
-    "@types/node": "^22.15.18",
+    "@types/node": "^24.1.0",
     "@ugrc/eslint-config": "^1.2.2",
     "eslint": "^9.26.0",
     "prettier": "^3.5.3",
