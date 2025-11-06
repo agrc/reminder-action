@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.19](https://github.com/agrc/reminder-action/compare/v1.0.18...v1.0.19) (2025-11-06)
+
+
+### Dependencies
+
+* bump npm dependencies 🌲 ([a205708](https://github.com/agrc/reminder-action/commit/a2057086031471f5f928c202ebca407cf7c3cc15))
+* node 20 -&gt; 24 ([b1260ed](https://github.com/agrc/reminder-action/commit/b1260ed8613b8cada3755059198f00b2a623905a))
+
 ## [1.0.18](https://github.com/agrc/reminder-action/compare/v1.0.17...v1.0.18) (2025-07-30)
 
 
