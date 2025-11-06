@@ -5,7 +5,7 @@ branding:
   icon: 'calendar'
   color: 'white'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
 inputs:
   repoToken:
