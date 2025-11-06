@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           show-progress: false
 
@@ -22,7 +22,7 @@ jobs:
           version: latest
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.node-version'
           cache: pnpm
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           show-progress: false
 
@@ -51,7 +51,7 @@ jobs:
           version: latest
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.node-version'
           cache: pnpm
@@ -78,7 +78,7 @@ jobs:
           private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: ⬇️ Set up code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           show-progress: false
           ref: ${{ github.head_ref }}
@@ -90,7 +90,7 @@ jobs:
           version: latest
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.node-version'
           cache: pnpm
@@ -120,7 +120,7 @@ jobs:
       pull-requests: write
     steps:
       - name: ⬇️ Set up code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           show-progress: false
 
@@ -130,7 +130,7 @@ jobs:
           version: latest
 
       - name: ⎔ Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version-file: '.node-version'
           cache: pnpm
@@ -149,7 +149,7 @@ jobs:
           private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
 
       - name: 💬 Create comment
-        uses: peter-evans/create-or-update-comment@v4
+        uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
