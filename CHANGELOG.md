@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.20](https://github.com/agrc/reminder-action/compare/v1.0.19...v1.0.20) (2026-02-12)
+
+
+### Dependencies
+
+* **dev:** bump @types/node ([4b48b9d](https://github.com/agrc/reminder-action/commit/4b48b9df16383f1d4aaad92eb921f45ed7c3cdb6))
+* **dev:** bump the safe-dependencies group across 1 directory with 2 updates ([6bfd4b3](https://github.com/agrc/reminder-action/commit/6bfd4b38688064ef246c232e9693adfb1ed51733))
+* fy26 q3 dependencies ([0ca5a18](https://github.com/agrc/reminder-action/commit/0ca5a1807b31c48007da2aa4152a78e219dde278))
+
 ## [1.0.19](https://github.com/agrc/reminder-action/compare/v1.0.18...v1.0.19) (2025-11-06)
 
 
