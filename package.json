@@ -26,7 +26,7 @@
     "check": "tsc -b",
     "format": "prettier . --write",
     "lint": "eslint .",
-    "test": "vitest"
+    "test": "vitest --run"
   },
   "dependencies": {
     "@actions/core": "^3.0.0",

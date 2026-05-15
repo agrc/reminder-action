@@ -19,7 +19,7 @@ jobs:
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -28,7 +28,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🧵 Lint
         run: pnpm run lint
@@ -48,7 +48,7 @@ jobs:
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -57,7 +57,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🧪 Run tests
         run: pnpm test
@@ -87,7 +87,7 @@ jobs:
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -96,7 +96,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🏗️ Build release assets
         run: pnpm run build
@@ -127,7 +127,7 @@ jobs:
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v4
         with:
-          version: latest
+          version: 11
 
       - name: ⎔ Setup Node.js
         uses: actions/setup-node@v6
@@ -136,7 +136,7 @@ jobs:
           cache: pnpm
 
       - name: 📥 Download dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: 🏗️ Build release assets
         run: pnpm run build

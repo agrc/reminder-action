@@ -1,3 +1,8 @@
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeExclude:
+  - '@ugrc/*'
+
 onlyBuiltDependencies:
   - esbuild
 
@@ -5,3 +10,6 @@ overrides:
   '@eslint/plugin-kit@<0.3.4': '>=0.3.4'
   js-yaml@>=4.0.0 <4.1.1: '>=4.1.1'
   storybook@>=9.0.0 <9.1.17: '>=9.1.17'
+
+allowBuilds:
+  esbuild: true
