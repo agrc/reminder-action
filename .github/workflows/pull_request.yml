@@ -17,7 +17,7 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6.0.5
         with:
           version: 11
 
@@ -46,7 +46,7 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6.0.5
         with:
           version: 11
 
@@ -71,7 +71,7 @@ jobs:
       contents: write
     steps:
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3.1.1
         id: generate-token
         with:
           app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
@@ -85,7 +85,7 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6.0.5
         with:
           version: 11
 
@@ -125,7 +125,7 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6.0.5
         with:
           version: 11
 
@@ -142,7 +142,7 @@ jobs:
         run: pnpm run build
 
       - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v2
+        uses: actions/create-github-app-token@v3.1.1
         id: generate-token
         with:
           app-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
