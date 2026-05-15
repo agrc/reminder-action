@@ -40,3 +40,11 @@ jobs:
       - name: check reminders and notify
         uses: agrc/reminder-action@v1
 ```
+
+## Scheduled workflow activity requirements
+
+This action depends on GitHub Actions scheduled workflows (`on.schedule`).
+
+GitHub automatically disables scheduled workflows in public repositories after 60 days of repository inactivity. This inactivity window is based on repository activity (for example, pushes, issues, pull requests, and comments), not reminder due dates.
+
+When this happens, GitHub sends a notification to repository administrators. You can re-enable reminders by re-enabling the scheduled workflow in the repository's Actions settings.
