@@ -1,6 +1,6 @@
 {
   "name": "reminder-action",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "private": true,
   "description": "Post issue comments when reminders are due",
   "keywords": [
