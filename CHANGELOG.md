@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.21](https://github.com/agrc/reminder-action/compare/v1.0.20...v1.0.21) (2026-05-15)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([2730552](https://github.com/agrc/reminder-action/commit/27305526e649e34bda2a722ecaa7f1968f1ad692))
+
+
+### Documentation
+
+* add scheduled workflow activity requirements to README ([ad0da64](https://github.com/agrc/reminder-action/commit/ad0da642d832397f245eeac2a1a5ec83c977ee06)), closes [#211](https://github.com/agrc/reminder-action/issues/211)
+
 ## [1.0.20](https://github.com/agrc/reminder-action/compare/v1.0.19...v1.0.20) (2026-02-12)
 
 
