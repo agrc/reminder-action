@@ -2,6 +2,13 @@ minimumReleaseAge: 10080
 minimumReleaseAgeStrict: true
 minimumReleaseAgeExclude:
   - '@ugrc/*'
+  - ws@8.20.1 || 8.21.0
+  - vite@8.0.16
+  - undici@6.27.0 || 6.28.0
+  - js-yaml@4.1.2 || 4.3.0 || 4.3.1
+  - '@babel/core@7.29.1'
+  - brace-expansion@1.1.16 || 1.1.17 || 1.1.18 || 5.0.7 || 5.0.8 || 5.0.9
+  - postcss@8.5.18 || 8.5.23
 
 onlyBuiltDependencies:
   - esbuild
