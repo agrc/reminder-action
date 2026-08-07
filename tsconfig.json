@@ -4,6 +4,8 @@
   "exclude": ["test/fixtures", "coverage", "dist", "node_modules"],
   "include": ["src"],
   "compilerOptions": {
-    "outDir": "./dist"
+    "moduleResolution": "bundler",
+    "outDir": "./dist",
+    "rootDir": "./src"
   }
 }
