@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.22](https://github.com/agrc/reminder-action/compare/v1.0.21...v1.0.22) (2026-08-07)
+
+
+### Dependencies
+
+* bump NPM dependencies 🌲 ([c642a50](https://github.com/agrc/reminder-action/commit/c642a502eba717cd7c56d3e954a4ae42eafa4329))
+* TypeScript v5 -&gt; v6 ([37ed754](https://github.com/agrc/reminder-action/commit/37ed754df72e0d980359f185592fcdd6651ad3f4))
+
 ## [1.0.21](https://github.com/agrc/reminder-action/compare/v1.0.20...v1.0.21) (2026-05-15)
 
 
