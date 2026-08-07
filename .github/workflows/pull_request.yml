@@ -141,20 +141,13 @@ jobs:
       - name: 🏗️ Build release assets
         run: pnpm run build
 
-      - name: 🪙 Convert token
-        uses: actions/create-github-app-token@v3.2.0
-        id: generate-token
-        with:
-          client-id: ${{ secrets.UGRC_RELEASE_BOT_APP_ID }}
-          private-key: ${{ secrets.UGRC_RELEASE_BOT_APP_KEY }}
-
       - name: 💬 Create comment
         uses: peter-evans/create-or-update-comment@v5
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             /remind me to verify that this works yesterday
-          token: ${{ steps.generate-token.outputs.token }}
+          token: ${{ github.token }}
 
       - name: 🧪 Run local action
         uses: ./
