@@ -46,6 +46,6 @@
     "prettier-plugin-packagejson": "^3.0.2",
     "rollup": "^4.62.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^5.0.2"
   }
 }
