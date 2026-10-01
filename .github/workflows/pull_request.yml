@@ -17,7 +17,7 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.9
+        uses: pnpm/action-setup@v6.1.0
         with:
           version: 11
 
@@ -46,7 +46,7 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.9
+        uses: pnpm/action-setup@v6.1.0
         with:
           version: 11
 
@@ -85,7 +85,7 @@ jobs:
           token: ${{ steps.generate-token.outputs.token }}
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.9
+        uses: pnpm/action-setup@v6.1.0
         with:
           version: 11
 
@@ -125,7 +125,7 @@ jobs:
           show-progress: false
 
       - name: 📦 Setup PNPM
-        uses: pnpm/action-setup@v6.0.9
+        uses: pnpm/action-setup@v6.1.0
         with:
           version: 11
 
