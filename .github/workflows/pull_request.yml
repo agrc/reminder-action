@@ -118,8 +118,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      issues: write
-      pull-requests: write
     concurrency:
       group: reminder-integration-${{ github.event.pull_request.number }}
       cancel-in-progress: false
@@ -128,6 +126,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           show-progress: false
+          persist-credentials: false
 
       - name: 📦 Setup PNPM
         uses: pnpm/action-setup@v6.1.0
@@ -161,21 +160,3 @@ jobs:
         env:
           INTEGRATION_MODE: mock
           CREATOR_ACTION_PATH: .integration/creator/dist/index.js
-
-      - name: 🧪 Verify live creation, delivery, and cleanup
-        if: >-
-          github.event.pull_request.head.repo.full_name == github.repository &&
-          github.event.sender.login != 'dependabot[bot]' &&
-          github.event.pull_request.user.login != 'dependabot[bot]'
-        run: pnpm run test:integration
-        env:
-          INTEGRATION_MODE: live
-          CREATOR_ACTION_PATH: .integration/creator/dist/index.js
-          GITHUB_TOKEN: ${{ github.token }}
-
-      - name: Explain live integration skip
-        if: >-
-          github.event.pull_request.head.repo.full_name != github.repository ||
-          github.event.sender.login == 'dependabot[bot]' ||
-          github.event.pull_request.user.login == 'dependabot[bot]'
-        run: echo "::notice::LIVE integration skipped for fork or Dependabot context (read-only token). Deterministic action cooperation was tested; live delivery was not."

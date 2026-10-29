@@ -9,11 +9,12 @@ import { getRemindersFromBody } from '../utilities.ts';
 import {
   assertCreated,
   assertDelivered,
+  cleanupFailedFixture,
   gateway,
   memoryApi,
-  withoutReminder,
   type Api,
   type Comment,
+  type Item,
 } from './fixture.ts';
 
 async function runBundle(path: string, env: NodeJS.ProcessEnv) {
@@ -51,6 +52,8 @@ async function exercise(api: Api, repository: string, allowReadOnlySkip = false)
   const folder = await mkdtemp(join(tmpdir(), 'reminder-integration-'));
   const server = await gateway(api, repository, before.body);
   let completed = false;
+  let created: Item | undefined;
+  let createdReminder: ReturnType<typeof assertCreated> | undefined;
   try {
     const [owner, name] = repository.split('/');
     assert(owner && name);
@@ -79,8 +82,10 @@ async function exercise(api: Api, repository: string, allowReadOnlySkip = false)
     assert(process.env.CREATOR_ACTION_PATH, 'CREATOR_ACTION_PATH must name the pinned creator bundle');
     await runBundle(resolve(process.env.CREATOR_ACTION_PATH), env);
     server.assertHealthy();
-    const created = await api.getItem();
-    const reminder = assertCreated(before, created, who, what);
+    const createdItem = await api.getItem();
+    const reminder = assertCreated(before, createdItem, who, what);
+    created = createdItem;
+    createdReminder = reminder;
     const acknowledgments = (await api.comments()).filter(
       (comment) =>
         comment.id > command.id && comment.body === `@${who} set a reminder for **${reminder.when.split('T')[0]}**`,
@@ -101,22 +106,14 @@ async function exercise(api: Api, repository: string, allowReadOnlySkip = false)
     await server.close();
     await rm(folder, { recursive: true });
     if (!completed) {
-      // Re-read rather than restore a snapshot, preserving unrelated edits and reminders.
-      const current = await api.getItem();
-      const matches = getRemindersFromBody(current.body).filter(
-        (reminder) => reminder.what === what && reminder.who === who,
+      const cleaned =
+        created && createdReminder
+          ? await cleanupFailedFixture(api, created, createdReminder, !before.labels.includes('reminder'))
+          : false;
+      console.error(
+        `Integration failed; fixture cleanup ${cleaned ? 'completed' : 'skipped because state changed or creation was incomplete'}. ` +
+          `Inspect marker ${marker}; command retained: ${command.html_url}`,
       );
-      assert(matches.length <= 1, 'Ambiguous fixture cleanup; inspect the marker manually');
-      if (matches[0]) await api.update(withoutReminder(current.body ?? '', matches[0]));
-      const remaining = await api.getItem();
-      if (
-        !before.labels.includes('reminder') &&
-        remaining.labels.includes('reminder') &&
-        getRemindersFromBody(remaining.body).length === 0
-      ) {
-        await api.unlabel();
-      }
-      console.error(`Integration failed; cleaned only fixture ${marker}. Command retained: ${command.html_url}`);
     }
   }
   return true;

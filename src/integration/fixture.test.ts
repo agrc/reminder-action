@@ -1,6 +1,14 @@
 import { spawnSync } from 'node:child_process';
 import { describe, expect, test } from 'vitest';
-import { assertCreated, assertDelivered, gateway, memoryApi, withoutReminder, type Item } from './fixture.ts';
+import {
+  assertCreated,
+  assertDelivered,
+  cleanupFailedFixture,
+  gateway,
+  memoryApi,
+  withoutReminder,
+  type Item,
+} from './fixture.ts';
 
 const reminder = { id: 1, who: 'tester', what: 'verify unique-marker', when: '2000-01-01T00:00:00.000Z' };
 const other = { id: 2, who: 'another-user', what: 'keep', when: '2999-01-01T00:00:00.000Z' };
@@ -71,6 +79,23 @@ describe('integration evidence', () => {
 });
 
 describe('scoped integration API', () => {
+  test('skips failure cleanup when the target body changed after creation', async () => {
+    const api = memoryApi(body(), ['unrelated', 'reminder']);
+    const snapshot = await api.getItem();
+    await api.update('Concurrent user edit');
+
+    await expect(cleanupFailedFixture(api, snapshot, reminder, true)).resolves.toBe(false);
+    expect(await api.getItem()).toEqual({ ...snapshot, body: 'Concurrent user edit' });
+  });
+
+  test('removes only the failed fixture and retains the label for other reminders', async () => {
+    const api = memoryApi(body([reminder, other]), ['unrelated', 'reminder']);
+    const snapshot = await api.getItem();
+
+    await expect(cleanupFailedFixture(api, snapshot, reminder, true)).resolves.toBe(true);
+    expect(await api.getItem()).toEqual({ ...snapshot, body: body([other]) });
+  });
+
   test('exposes only the target item and rejects writes to another item', async () => {
     const api = memoryApi(body(), ['reminder']);
     const server = await gateway(api, 'owner/repo', body());

@@ -38,6 +38,34 @@ export function withoutReminder(body: string, reminder: Reminder) {
   );
 }
 
+export async function cleanupFailedFixture(
+  api: Api,
+  expected: Item,
+  reminder: Reminder,
+  removeLabel: boolean,
+) {
+  const current = await api.getItem();
+  const sameLabels = (left: string[], right: string[]) =>
+    left.length === right.length && left.every((label) => right.includes(label));
+  if (current.body !== expected.body || !sameLabels(current.labels, expected.labels)) return false;
+
+  const matches = getRemindersFromBody(current.body).filter((entry) => entry.id === reminder.id);
+  assert(matches.length <= 1, 'Ambiguous fixture cleanup; inspect the marker manually');
+  const cleanedBody = matches.length ? withoutReminder(current.body ?? '', matches[0]!) : current.body;
+  if (cleanedBody !== current.body) await api.update(cleanedBody ?? '');
+
+  const remaining = await api.getItem();
+  if (remaining.body !== cleanedBody || !sameLabels(remaining.labels, current.labels)) return false;
+  if (
+    removeLabel &&
+    remaining.labels.includes('reminder') &&
+    getRemindersFromBody(remaining.body).length === 0
+  ) {
+    await api.unlabel();
+  }
+  return true;
+}
+
 export function assertCreated(before: Item, after: Item, who: string, what: string) {
   assert(after.labels.includes('reminder'), 'Creator did not add the reminder label');
   const original = getRemindersFromBody(before.body);
