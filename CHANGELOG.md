@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.0.23](https://github.com/agrc/reminder-action/compare/v1.0.22...v1.0.23) (2026-10-29)
+
+
+### Dependencies
+
+* bump brace-expansion from 1.1.18 to 1.1.21 ([#251](https://github.com/agrc/reminder-action/issues/251)) ([484bbdd](https://github.com/agrc/reminder-action/commit/484bbdd913fad2ff3a4e73ca034a5eebf2eee543))
+* bump browserslist from 4.28.2 to 4.29.3 ([#260](https://github.com/agrc/reminder-action/issues/260)) ([ea4cfb6](https://github.com/agrc/reminder-action/commit/ea4cfb6c475c8ba377d780b8b258eba02b9c99e9))
+* bump js-yaml from 4.3.1 to 4.3.2 ([#253](https://github.com/agrc/reminder-action/issues/253)) ([da0b95a](https://github.com/agrc/reminder-action/commit/da0b95a9ab8e5945853f13538027352cee8dd1ea))
+* bump source-map-js from 1.2.1 to 1.2.2 ([#263](https://github.com/agrc/reminder-action/issues/263)) ([9dc8728](https://github.com/agrc/reminder-action/commit/9dc87287290b6184fad7c2d2ddda2a9c8c817942))
+* bump storybook from 9.1.20 to 9.1.21 ([#264](https://github.com/agrc/reminder-action/issues/264)) ([eea1343](https://github.com/agrc/reminder-action/commit/eea13434ab206030429c91600b5e82852099d0cd))
+* bump undici from 6.28.0 to 6.29.1 ([#265](https://github.com/agrc/reminder-action/issues/265)) ([479bbc4](https://github.com/agrc/reminder-action/commit/479bbc405a4379002734339872576b926b2f3d57))
+* bump vite from 8.0.11 to 8.3.5 ([#267](https://github.com/agrc/reminder-action/issues/267)) ([75f9959](https://github.com/agrc/reminder-action/commit/75f9959f023bb2280d3c8501a4fcc8a179fff680))
+* bump ws from 8.20.0 to 8.22.0 ([#262](https://github.com/agrc/reminder-action/issues/262)) ([dbb6d9b](https://github.com/agrc/reminder-action/commit/dbb6d9bc2235d1fdc29eb0b4780a08052151ef0b))
+* **dev:** bump the safe-dependencies group across 1 directory with 5 updates ([#269](https://github.com/agrc/reminder-action/issues/269)) ([2e54283](https://github.com/agrc/reminder-action/commit/2e542838c2d0562952d56790074810e01985058c))
+* **dev:** bump vitest from 4.1.10 to 5.0.5 ([#259](https://github.com/agrc/reminder-action/issues/259)) ([e2eb277](https://github.com/agrc/reminder-action/commit/e2eb277a6ec7729948c244c160fd875ba0102e2e))
+
 ## [1.0.22](https://github.com/agrc/reminder-action/compare/v1.0.21...v1.0.22) (2026-08-07)
 
 
