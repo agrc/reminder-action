@@ -26,7 +26,8 @@
     "check": "tsc -b",
     "format": "prettier . --write",
     "lint": "eslint .",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "test:integration": "node src/integration/run.ts"
   },
   "dependencies": {
     "@actions/core": "^3.0.1",

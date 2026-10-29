@@ -4,6 +4,7 @@
   "exclude": ["test/fixtures", "coverage", "dist", "node_modules"],
   "include": ["src"],
   "compilerOptions": {
+    "rewriteRelativeImportExtensions": true,
     "moduleResolution": "bundler",
     "outDir": "./dist",
     "rootDir": "./src"

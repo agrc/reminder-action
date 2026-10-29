@@ -117,7 +117,12 @@ jobs:
     name: Integration test
     runs-on: ubuntu-latest
     permissions:
+      contents: read
+      issues: write
       pull-requests: write
+    concurrency:
+      group: reminder-integration-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     steps:
       - name: ⬇️ Set up code
         uses: actions/checkout@v7
@@ -141,13 +146,36 @@ jobs:
       - name: 🏗️ Build release assets
         run: pnpm run build
 
-      - name: 💬 Create comment
-        uses: peter-evans/create-or-update-comment@v5
+      - name: ⬇️ Set up published creator
+        uses: actions/checkout@v7
         with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            /remind me to verify that this works yesterday
-          token: ${{ github.token }}
+          repository: agrc/create-reminder-action
+          # v1 (1.1.26): run the published bundle, not its undeclared testContextPath input.
+          ref: c2025868f56a49dfc239012c78cb8e2beee5554e
+          path: .integration/creator
+          persist-credentials: false
+          sparse-checkout: dist
 
-      - name: 🧪 Run local action
-        uses: ./
+      - name: 🧪 Verify deterministic action cooperation
+        run: pnpm run test:integration
+        env:
+          INTEGRATION_MODE: mock
+          CREATOR_ACTION_PATH: .integration/creator/dist/index.js
+
+      - name: 🧪 Verify live creation, delivery, and cleanup
+        if: >-
+          github.event.pull_request.head.repo.full_name == github.repository &&
+          github.event.sender.login != 'dependabot[bot]' &&
+          github.event.pull_request.user.login != 'dependabot[bot]'
+        run: pnpm run test:integration
+        env:
+          INTEGRATION_MODE: live
+          CREATOR_ACTION_PATH: .integration/creator/dist/index.js
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Explain live integration skip
+        if: >-
+          github.event.pull_request.head.repo.full_name != github.repository ||
+          github.event.sender.login == 'dependabot[bot]' ||
+          github.event.pull_request.user.login == 'dependabot[bot]'
+        run: echo "::notice::LIVE integration skipped for fork or Dependabot context (read-only token). Deterministic action cooperation was tested; live delivery was not."
